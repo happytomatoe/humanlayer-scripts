@@ -29,6 +29,21 @@ sync-config:
 install: sync sync-config
   @echo "OpenCode config installed at {{oc-home}}/"
 
+# ── Agents ──────────────────────────────────────────────
+
+# Copy AGENT.md to OpenCode (AGENTS.md) and Hermes (SOUL.md)
+sync-agent:
+  #!/usr/bin/env bash
+  cp AGENT.md "{{oc-home}}/AGENTS.md"
+  echo "Copied AGENT.md -> {{oc-home}}/AGENTS.md"
+  soul=$(<~/.hermes/SOUL.md); agent=$(<AGENT.md)
+  if [[ "$soul" == *"$agent"* ]]; then
+    echo "Hermes SOUL.md: already has agent guidelines, skipped"
+  else
+    { echo ""; echo "---"; echo ""; cat AGENT.md; } >> ~/.hermes/SOUL.md
+    echo "Hermes SOUL.md: appended AGENT.md"
+  fi
+
 # ── Lists ───────────────────────────────────────────────
 
 # List all opencode skills
@@ -43,21 +58,31 @@ list-commands:
 list-mcp:
   @rg '"type"' opencode.json || echo "no MCP servers configured"
 
-# ── Docker: SearXNG ────────────────────────────────────
+# ── SearXNG (Quadlet — systemd-managed containers) ─────
 
-# Start SearXNG (search engine for MCP)
+# Install/update SearXNG quadlet files and enable services
+searxng-install:
+  ./docker/searxng/install.sh
+
+# Start SearXNG (via systemd user service)
 searxng-up:
-  docker compose -f docker/searxng/docker-compose.yml up -d
+  systemctl --user start searxng.service
 
 # Stop SearXNG
 searxng-down:
-  docker compose -f docker/searxng/docker-compose.yml down
+  systemctl --user stop searxng.service
 
 # View SearXNG logs
 searxng-logs:
-  docker compose -f docker/searxng/docker-compose.yml logs -f
+  journalctl --user -u searxng.service -f
 
-# Generate a secret key for SearXNG
+# Check SearXNG service status
+searxng-status:
+  @systemctl --user status searxng.service --no-pager; true
+  @echo "---"
+  @curl -s -o /dev/null -w "Port 8080 reachable: %{http_code}\n" http://localhost:8080 || echo "Port 8080 reachable: 000"
+
+# Generate a random secret key for SearXNG
 searxng-key:
   @openssl rand -hex 32
 
