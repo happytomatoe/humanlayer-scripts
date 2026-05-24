@@ -5,7 +5,7 @@ After=default.target
 [Service]
 Type=oneshot
 RemainAfterExit=yes
-WorkingDirectory=/var/home/l/git/humanlayer-scripts/docker/searxng
+WorkingDirectory=${REPO_DIR}/docker/searxng
 ExecStart=/usr/bin/podman compose up -d
 ExecStop=/usr/bin/podman compose down
 

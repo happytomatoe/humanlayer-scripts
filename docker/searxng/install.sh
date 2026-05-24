@@ -26,9 +26,8 @@ echo ""
 echo "==> Starting services now (image pull may take a minute)..."
 for svc in searxng-network.service valkey.service searxng.service; do
   echo "  Starting $svc..."
-  systemctl --user start "$svc" &
+  systemctl --user start "$svc"
 done
-wait
 
 echo ""
 echo "==> Status:"

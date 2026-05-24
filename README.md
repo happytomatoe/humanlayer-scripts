@@ -9,7 +9,7 @@ Fork of [humanlayer/humanlayer](https://github.com/humanlayer/humanlayer) AI scr
 sudo dnf install -y podman podman-compose just
 
 # 2. Clone and enter
-git clone https://github.com/your-org/humanlayer-scripts.git
+git clone https://github.com/happytomatoe/humanlayer-scripts.git
 cd humanlayer-scripts
 
 # 3. Install SearXNG (required for web search via MCP)
