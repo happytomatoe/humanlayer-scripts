@@ -20,6 +20,15 @@ sync:
   cp -r {{oc-project}}/skills {{oc-home}}/skills
   @echo "Synced .opencode/{command,agent,skills} -> {{oc-home}}/"
 
+# Fetch individual skill from upstream (requires network)
+fetch-frontend-design:
+  @mkdir -p skills/frontend-design/scripts
+  @curl -sL 'https://raw.githubusercontent.com/anthropics/skills/main/skills/frontend-design/SKILL.md'       -o skills/frontend-design/SKILL.md
+  @curl -sL 'https://raw.githubusercontent.com/anthropics/skills/main/skills/frontend-design/LICENSE.txt'     -o skills/frontend-design/LICENSE.txt
+  @curl -sL 'https://raw.githubusercontent.com/anthropics/skills/main/skills/frontend-design/scripts/generate.sh' -o skills/frontend-design/scripts/generate.sh
+  @curl -sL 'https://raw.githubusercontent.com/anthropics/skills/main/skills/frontend-design/scripts/preview.sh'  -o skills/frontend-design/scripts/preview.sh
+  @echo "Fetched frontend-design skill from anthropics/skills"
+
 # Copy opencode.json (MCP config) to ~/.config/opencode/
 sync-config:
   cp opencode.json {{oc-home}}/opencode.json
