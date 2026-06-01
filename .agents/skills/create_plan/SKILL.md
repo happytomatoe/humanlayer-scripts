@@ -217,11 +217,9 @@ After structure approval:
 - Related research: `thoughts/shared/research/[relevant].md`
 ````
 
-### Step 5: Sync and Review
+### Step 5: Review
 
-1. Run `humanlayer thoughts sync` to sync the newly created plan
-2. Present the draft plan location and iterate based on feedback
-3. After making changes, run `humanlayer thoughts sync` again
+1. Present the draft plan location and iterate based on feedback
 
 ## Important Guidelines
 

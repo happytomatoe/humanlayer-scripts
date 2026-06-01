@@ -76,10 +76,9 @@ Does this align with your intent?
 2. **Ensure consistency**: update "What We're NOT Doing", "Implementation Approach", and success criteria as needed
 3. **Preserve quality standards**: specific file:line references, measurable criteria, `make` commands
 
-### Step 5: Sync and Review
+### Step 5: Review
 
-1. Run `humanlayer thoughts sync`
-2. Present the changes made and ask if further adjustments are needed
+1. Present the changes made and ask if further adjustments are needed
 
 ## Important Guidelines
 

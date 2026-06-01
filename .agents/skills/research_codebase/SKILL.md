@@ -87,8 +87,7 @@ Then wait for the user's research query.
 7. **Add GitHub permalinks** if on main/pushed branch:
    - `gh repo view --json owner,name` then construct `https://github.com/{owner}/{repo}/blob/{commit}/{file}#L{line}`
 
-8. **Sync and present:**
-   - Run `humanlayer thoughts sync`
+8. **Present:**
    - Present concise summary with key file references
 
 9. **Handle follow-up questions:**

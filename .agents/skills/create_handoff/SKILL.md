@@ -69,8 +69,6 @@ type: implementation_strategy
 ---
 
 ### 3. Approve and Sync
-Run `humanlayer thoughts sync` to save the document.
-
 Once this is completed, you should respond to the user with the template between <template_response></template_response> XML tags. do NOT include the tags in your response.
 
 <template_response>
