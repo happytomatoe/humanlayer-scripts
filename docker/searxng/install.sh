@@ -19,19 +19,15 @@ loginctl enable-linger 2>/dev/null || true
 echo "==> Reloading systemd user daemon"
 systemctl --user daemon-reload
 
-echo "==> Enabling services (will start on boot)"
-systemctl --user enable searxng-network.service valkey.service searxng.service
-
-echo ""
 echo "==> Starting services now (image pull may take a minute)..."
-for svc in searxng-network.service valkey.service searxng.service; do
+for svc in valkey.service searxng.service; do
   echo "  Starting $svc..."
   systemctl --user start "$svc"
 done
 
 echo ""
 echo "==> Status:"
-for svc in searxng-network.service valkey.service searxng.service; do
+for svc in valkey.service searxng.service; do
   echo "  $svc $(systemctl --user is-active "$svc")"
 done
 

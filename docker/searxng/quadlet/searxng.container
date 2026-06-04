@@ -12,8 +12,8 @@ Environment=SEARXNG_SECRET_KEY=${SEARXNG_SECRET_KEY:-changeme}
 Image=docker.io/searxng/searxng:latest
 Network=searxng.network
 PublishPort=8080:8080
-Volume=REPO_DIR/docker/searxng/searxng/settings.yml:/etc/searxng/settings.yml:Z
-Volume=REPO_DIR/docker/searxng/searxng/limiter.toml:/etc/searxng/limiter.toml:Z
+Volume=/home/l/git/humanlayer-scripts/docker/searxng/searxng/settings.yml:/etc/searxng/settings.yml:Z
+Volume=/home/l/git/humanlayer-scripts/docker/searxng/searxng/limiter.toml:/etc/searxng/limiter.toml:Z
 Volume=searxng-data:/var/cache/searxng
 
 [Service]
